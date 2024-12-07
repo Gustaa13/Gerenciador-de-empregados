@@ -58,7 +58,11 @@ public class TecnicoADM extends Pessoa implements Funcionario{
 
     public void setFuncaoGratificada(Boolean funcaoGratificada) {
         this.funcaoGratificada = funcaoGratificada;
-    }
+    } 
 
-    
+    public void exibir_principais_dados(){
+        System.out.println("Nome: " + getNome() + "\n");
+        System.out.println("Nivel técnico: " + nivelTecnico + "\n");
+        System.out.println("Formoção técnica: " + formacaoTecnico + "\n");
+    }
 }

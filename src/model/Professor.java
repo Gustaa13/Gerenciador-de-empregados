@@ -50,5 +50,9 @@ public class Professor extends Pessoa implements Funcionario{
         this.disciplinas = disciplinas;
     } 
 
-    
+    public void exibir_principais_dados(){
+        System.out.println("Nome: " + getNome() + "\n");
+        System.out.println("Nivel de professor: " + nivelProfessor + "\n");
+        System.out.println("Formação: " + formacaoProfessor + "\n");
+    }
 }

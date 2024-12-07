@@ -130,5 +130,7 @@ public abstract class Pessoa {
     public void setDataIngresso(LocalDate dataIngresso) {
         this.dataIngresso = dataIngresso;
     }
+
+    public abstract void exibir_principais_dados();
 }
 

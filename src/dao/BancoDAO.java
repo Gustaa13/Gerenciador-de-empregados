@@ -3,6 +3,8 @@ package dao;
 import java.util.ArrayList;
 
 import model.Pessoa;
+import model.Professor;
+import model.TecnicoADM;
 
 public class BancoDAO {
     private ArrayList<Pessoa> funcionarios;
@@ -31,5 +33,33 @@ public class BancoDAO {
             }
         }
         return null;
+    }
+
+    public Boolean deletarMatricula(Long matricula){
+        Pessoa pessoa = buscarMatricula(matricula);
+        if(pessoa != null){
+            return banco.getArrayPessoa().remove(pessoa);
+        }
+        return false;
+    }
+
+    public ArrayList<Professor> buscarProfessores(){
+        ArrayList<Professor> professores = new ArrayList<>();
+        for(Pessoa pessoa : banco.getArrayPessoa()){
+            if(pessoa instanceof Professor){
+                professores.add((Professor)pessoa);
+            }
+        }
+        return professores;
+    }
+
+    public ArrayList<TecnicoADM> buscarTecnicosADM(){
+        ArrayList<TecnicoADM> tecnicoADMs = new ArrayList<>();
+        for(Pessoa pessoa : banco.getArrayPessoa()){
+            if(pessoa instanceof TecnicoADM){
+                tecnicoADMs.add((TecnicoADM)pessoa);
+            }
+        }
+        return tecnicoADMs;
     }
 }
