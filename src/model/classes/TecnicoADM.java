@@ -1,7 +1,11 @@
-package model;
+package model.classes;
 
 import java.time.LocalDate;
-import interfaces.Funcionario;
+
+import model.enums.Formacao;
+import model.enums.Genero;
+import model.enums.Nivel;
+import model.interfaces.Funcionario;
 
 public class TecnicoADM extends Pessoa implements Funcionario{
     private Nivel nivelTecnico;
@@ -9,23 +13,45 @@ public class TecnicoADM extends Pessoa implements Funcionario{
     private Boolean insalubridade;
     private Boolean funcaoGratificada;
 
-    public TecnicoADM(){
-        
-    }  
+    public TecnicoADM(){}  
 
-    public TecnicoADM(String nome, String cpf, LocalDate dataNascimento, Genero genero, Endereco endereco, Long matricula, Double salario, String departamento, Integer cargaHoraria, LocalDate dataIngresso, Nivel nivelTecnico, Formacao formacaoTecnico, Boolean insalubridade, Boolean funcaoGratificada) {
-        super(nome, cpf, dataNascimento, genero, endereco, matricula, salario, departamento, cargaHoraria, dataIngresso);
+    public TecnicoADM(
+
+        String nome, 
+        String cpf, 
+        LocalDate dataNascimento, 
+        Genero genero, 
+        Endereco endereco, 
+        Long matricula, 
+        Double salario, 
+        String departamento, 
+        Integer cargaHoraria, 
+        LocalDate dataIngresso,
+
+        Nivel nivelTecnico, 
+        Formacao formacaoTecnico, 
+        Boolean insalubridade, 
+        Boolean funcaoGratificada
+    ){
+
+        super(
+            nome, 
+            cpf, 
+            dataNascimento, 
+            genero, 
+            endereco, 
+            matricula, 
+            salario, 
+            departamento, 
+            cargaHoraria, 
+            dataIngresso
+        );
+
         this.nivelTecnico = nivelTecnico;
         this.formacaoTecnico = formacaoTecnico;
         this.insalubridade = insalubridade;
         this.funcaoGratificada = funcaoGratificada;
-    }
 
-    public TecnicoADM(Nivel nivelTecnico, Formacao formacaoTecnico, Boolean insalubridade, Boolean funcaoGratificada) {
-        this.nivelTecnico = nivelTecnico;
-        this.formacaoTecnico = formacaoTecnico;
-        this.insalubridade = insalubridade;
-        this.funcaoGratificada = funcaoGratificada;
     }
 
     public Nivel getNivelTecnico() {
@@ -60,9 +86,8 @@ public class TecnicoADM extends Pessoa implements Funcionario{
         this.funcaoGratificada = funcaoGratificada;
     } 
 
-    public void exibir_principais_dados(){
-        System.out.println("Nome: " + getNome() + "\n");
-        System.out.println("Nivel técnico: " + nivelTecnico + "\n");
-        System.out.println("Formoção técnica: " + formacaoTecnico + "\n");
+    @Override
+    public Double calcularSalario(){
+        return null;
     }
 }

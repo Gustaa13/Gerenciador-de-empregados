@@ -1,4 +1,4 @@
-package model;
+package model.classes;
 
 public class Endereco {
     private String rua;
@@ -7,16 +7,24 @@ public class Endereco {
     private String cidade;
     private String cep;
 
-    public Endereco(){
+    public Endereco(){}
 
-    }
+    public Endereco(
 
-    public Endereco(String rua, Integer numero, String bairro, String cidade, String cep){
+        String rua, 
+        Integer numero, 
+        String bairro, 
+        String cidade, 
+        String cep
+
+    ){
+
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
         this.cidade = cidade;
         this.cep = cep;
+
     }
 
     public String getRua() {

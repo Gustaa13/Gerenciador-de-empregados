@@ -1,6 +1,8 @@
-package model;
+package model.classes;
 
 import java.time.LocalDate;
+
+import model.enums.Genero;
 
 public abstract class Pessoa {
     private String nome;
@@ -14,11 +16,23 @@ public abstract class Pessoa {
     private Integer cargaHoraria;
     private LocalDate dataIngresso;
 
-    public Pessoa(){
+    public Pessoa(){}
 
-    }
+    public Pessoa(
 
-    public Pessoa(String nome, String cpf, LocalDate dataNascimento, Genero genero, Endereco endereco, Long matricula, Double salario, String departamento, Integer cargaHoraria, LocalDate dataIngresso) {
+        String nome, 
+        String cpf, 
+        LocalDate dataNascimento, 
+        Genero genero, 
+        Endereco endereco, 
+        Long matricula, 
+        Double salario, 
+        String departamento, 
+        Integer cargaHoraria, 
+        LocalDate dataIngresso
+
+    ){
+
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -29,7 +43,9 @@ public abstract class Pessoa {
         this.departamento = departamento;
         this.cargaHoraria = cargaHoraria;
         this.dataIngresso = dataIngresso;
+
     }
+
 
 
     public String getNome() {
@@ -130,7 +146,5 @@ public abstract class Pessoa {
     public void setDataIngresso(LocalDate dataIngresso) {
         this.dataIngresso = dataIngresso;
     }
-
-    public abstract void exibir_principais_dados();
 }
 
