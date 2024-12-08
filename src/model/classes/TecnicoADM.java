@@ -23,7 +23,6 @@ public class TecnicoADM extends Pessoa implements Funcionario{
         Genero genero, 
         Endereco endereco, 
         Long matricula, 
-        Double salario, 
         String departamento, 
         Integer cargaHoraria, 
         LocalDate dataIngresso,
@@ -41,7 +40,6 @@ public class TecnicoADM extends Pessoa implements Funcionario{
             genero, 
             endereco, 
             matricula, 
-            salario, 
             departamento, 
             cargaHoraria, 
             dataIngresso

@@ -26,7 +26,6 @@ public abstract class Pessoa {
         Genero genero, 
         Endereco endereco, 
         Long matricula, 
-        Double salario, 
         String departamento, 
         Integer cargaHoraria, 
         LocalDate dataIngresso
@@ -39,7 +38,6 @@ public abstract class Pessoa {
         this.genero = genero;
         this.endereco = endereco;
         this.matricula = matricula;
-        this.salario = salario;
         this.departamento = departamento;
         this.cargaHoraria = cargaHoraria;
         this.dataIngresso = dataIngresso;

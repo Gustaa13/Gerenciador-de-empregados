@@ -12,28 +12,28 @@ public abstract class Controlador {
             case 1: 
                 do{
                     Menu.menuCadastrar(); 
-                    operacao = Leitor.DeInteiro();
+                    operacao = Leitor.deInteiro();
                     Controlador.controladorMenuCadastro(operacao);
                 }while(operacao != 3);
             break;
             case 2: 
                 do{
                     Menu.menuListar(); 
-                    operacao = Leitor.DeInteiro();
+                    operacao = Leitor.deInteiro();
                     Controlador.controladorMenuLista(operacao);
                 }while(operacao != 3);
             break;
             case 3: 
                 do{
                     Menu.menuDeletar(); 
-                    operacao = Leitor.DeInteiro();
+                    operacao = Leitor.deInteiro();
                     Controlador.controladorMenuDelete(operacao);
                 }while(operacao != 3);
             break;
             case 4: 
                 do{
                     Menu.menuBuscar(); 
-                    operacao = Leitor.DeInteiro();
+                    operacao = Leitor.deInteiro();
                     Controlador.controladorMenuBusca(operacao);
                 }while(operacao != 3);  
             break;
@@ -48,7 +48,9 @@ public abstract class Controlador {
 
         switch (operacao) {
             case 1:
-                
+                Professor professor = LerClasse.professor();
+                Funcionarios.adicionarProfessor(professor);
+                System.out.println("Professor adicionado com sucesso!");
             break;
             case 2:
                 
@@ -70,7 +72,17 @@ public abstract class Controlador {
                 }else{
                     System.out.println("\n---- Professores ----\n");
                     for(Professor professor : Funcionarios.listarProfessores()){
-                        System.out.println(professor.getNome() + "\n");
+                        System.out.println("Nome: " + professor.getNome());
+                        System.out.println("CPF: " + professor.getCpf());
+                        System.out.println("Data de Nascimento: " + professor.getDataNascimento());
+                        System.out.println("Gênero: " + professor.getGenero());
+                        System.out.println("Endereço: " + professor.getEndereco());
+                        System.out.println("Matrícula: " + professor.getMatricula());
+                        System.out.println("Departamento: " + professor.getDepartamento());
+                        System.out.println("Carga Horária: " + professor.getCargaHoraria());
+                        System.out.println("Data de Ingresso: " + professor.getDataIngresso());
+                        System.out.println("Nível: " + professor.getNivelProfessor());
+                        System.out.println("Formação: " + professor.getFormacaoProfessor());
                     }
                 }  
             break;
@@ -98,7 +110,7 @@ public abstract class Controlador {
         switch (operacao) {
             case 1:
                 System.out.print("\nDigite a matrícula do professor: ");
-                matricula = Leitor.DeLong();
+                matricula = Leitor.deLong();
 
                 if (Funcionarios.buscarProfessorPorMatricula(matricula) == null) {
                     System.out.println("\nMatrícula para professor não existe!");
@@ -109,7 +121,7 @@ public abstract class Controlador {
             break;
             case 2:
                 System.out.print("\nDigite a matrícula do tecnico: ");
-                matricula = Leitor.DeLong();
+                matricula = Leitor.deLong();
 
                 if (Funcionarios.buscarTecnicoADMPorMatricula(matricula) == null) {
                     System.out.println("\nMatrícula para técnico não existe!");
@@ -131,7 +143,7 @@ public abstract class Controlador {
         switch (operacao) {
             case 1:
                 System.out.print("Digite a matrícula do professor: ");
-                matricula = Leitor.DeLong();
+                matricula = Leitor.deLong();
 
                 if (Funcionarios.buscarProfessorPorMatricula(matricula) == null) {
                     System.out.println("\nMatrícula para professor não existe!");
@@ -141,7 +153,7 @@ public abstract class Controlador {
             break;
             case 2:
                 System.out.print("\nDigite a matrícula do técnico: ");
-                matricula = Leitor.DeLong();
+                matricula = Leitor.deLong();
 
                 if (Funcionarios.buscarTecnicoADMPorMatricula(matricula) == null) {
                     System.out.println("\nMatrícula para técnico não existe!");
