@@ -59,7 +59,7 @@ public class Funcionarios {
         return tecnicoADMs;
     }
 
-    public static void removerTecnicosADMs(TecnicoADM tecnicoADM){
+    public static void removerTecnicosADM(TecnicoADM tecnicoADM){
         PessoasDAO bancoDePessoas = PessoasDAO.getInstance();
         bancoDePessoas.removerPessoa(tecnicoADM);
     }

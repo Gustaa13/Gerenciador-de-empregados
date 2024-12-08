@@ -7,9 +7,13 @@ import model.enums.Formacao;
 import model.enums.Genero;
 import model.enums.Nivel;
 import service.Funcionarios;
+import util.Controlador;
+import util.Leitor;
+import util.Menu;
 
 public class Main {
     public static void main(String[] args) {
+        int operacao = 0;
     
         Professor professor = new Professor(
             "Gustavo", 
@@ -28,14 +32,13 @@ public class Main {
         );
 
         Funcionarios.adicionarProfessor(professor);
-        for(Professor prof : Funcionarios.listarProfessores()){
-            System.out.println("\nOs professores são: " + prof.getNome() + "\n");
-        }
-
-        System.out.println("\nO professor é: " + Funcionarios.buscarProfessorPorMatricula(Long.valueOf(2)).getNome() + "\n");
         
-        Funcionarios.removerProfessor(professor);
+        do{
+            Menu.menuPrincipal();
+            operacao = Leitor.DeInteiro();
+            Controlador.controladorMenuPrincipal(operacao);
+        }while(operacao != 5);
 
-        System.out.println("\nO professor é: " + Funcionarios.buscarProfessorPorMatricula(Long.valueOf(2)) + "\n");
+        Leitor.Fechar();
     }
 }
