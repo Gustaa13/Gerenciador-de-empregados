@@ -88,4 +88,9 @@ public class TecnicoADM extends Pessoa implements Funcionario{
     public Double calcularSalario(){
         return null;
     }
+
+    @Override
+    public String getPrincipaisDados(){
+        return super.getPrincipaisDados() + "\nNível: " + nivelTecnico + "\nFormação: " + formacaoTecnico;
+    }
 }

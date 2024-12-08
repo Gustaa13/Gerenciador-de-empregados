@@ -79,4 +79,9 @@ public class Professor extends Pessoa implements Funcionario{
     public Double calcularSalario(){
         return null;
     }
+
+    @Override
+    public String getPrincipaisDados(){
+        return super.getPrincipaisDados() + "\nNivel: " + nivelProfessor + "\nFormação: " + formacaoProfessor + "\nDisciplinas: " + disciplinas;
+    }
 }

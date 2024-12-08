@@ -144,5 +144,9 @@ public abstract class Pessoa {
     public void setDataIngresso(LocalDate dataIngresso) {
         this.dataIngresso = dataIngresso;
     }
+
+    public String getPrincipaisDados(){
+        return "\nNome: " + nome + "\nCpf: " + cpf + "\nMatrícula: " + matricula;
+    }
 }
 

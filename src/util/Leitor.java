@@ -8,6 +8,7 @@ import java.util.Scanner;
 import model.enums.Formacao;
 import model.enums.Genero;
 import model.enums.Nivel;
+import service.Funcionarios;
 
 public abstract class Leitor {
     static Scanner leitor = new Scanner(System.in);
@@ -15,7 +16,10 @@ public abstract class Leitor {
     public static int deInteiro(){
 
         if(leitor.hasNextInt()){
-            return leitor.nextInt();
+            int inteiro = leitor.nextInt();
+            Leitor.limpar();
+
+            return inteiro;
         }else{
             Leitor.limpar();
             System.out.print("\nNúmero inválido! Digite novamente: ");
@@ -26,7 +30,10 @@ public abstract class Leitor {
     public static Long deLong(){
         
         if(leitor.hasNextLong()){
-            return leitor.nextLong();
+            Long numeroLongo = leitor.nextLong();
+            Leitor.limpar();
+
+            return numeroLongo;
         }else{
             Leitor.limpar();
             System.out.print("\nNúmero inválido! Digite novamente: ");
@@ -36,11 +43,30 @@ public abstract class Leitor {
 
     public static Double deDouble(){
         if(leitor.hasNextLong()){
-            return leitor.nextDouble();
+            Double pontoFlutuante = leitor.nextDouble();
+            Leitor.limpar();
+
+            return pontoFlutuante;
         }else{
             Leitor.limpar();
             System.out.print("\nNúmero inválido! Digite novamente: ");
             return deDouble();
+        }
+    }
+
+    public static Boolean deBoolean(){
+        String booleano = leitor.nextLine().toUpperCase();
+
+        switch (booleano) {
+            case "SIM":
+                return true;
+            case "NÃO":
+                return false;
+            case "NAO":
+                return false;
+            default:
+                System.out.println("\nResposta inválida! Digite sim ou não: ");
+                return deBoolean();
         }
     }
 
@@ -49,26 +75,47 @@ public abstract class Leitor {
     }
 
     public static String deCPF(){
-        String cpf = leitor.next().trim();
+        String cpf = leitor.nextLine();
 
         if (cpf.matches("\\d{11}")) {
             return cpf;
         } else {
-            Leitor.limpar();
             System.out.println("\nCPF inválido! Digite exatamente 11 dígitos: ");
             return deCPF();
         }
+    }
+
+    public static String deCEP(){
+        String cep = Leitor.deString();
+
+            if (cep.matches("\\d{5}-\\d{3}")) {
+                return cep;
+            } else {
+                System.out.print("\nCEP inválido! Use o formato XXXXX-XXX. Digite novamente: ");
+                return deCEP();
+            }
     }
 
     public static LocalDate deData(){
         String data = leitor.nextLine();
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            return LocalDate.parse(data, formatter);
+            DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            return LocalDate.parse(data, formatador);
         } catch (DateTimeParseException e) {
             System.out.println("\nData inválida! Use o formato dd/MM/yyyy: ");
             return deData();
+        }
+    }
+
+    public static Long deMatricula(){
+        Long matricula = Leitor.deLong();
+        
+        if(Funcionarios.buscarProfessorPorMatricula(matricula) != null || Funcionarios.buscarTecnicoADMPorMatricula(matricula) != null){
+            System.out.print("Matrícula já existe! Digite uma matrícula diferente: ");
+            return deMatricula();
+        }else{
+            return matricula;
         }
     }
 

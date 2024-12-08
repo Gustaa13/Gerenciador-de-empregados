@@ -4,37 +4,37 @@ import model.classes.Professor;
 import model.classes.TecnicoADM;
 import service.Funcionarios;
 
-public abstract class Controlador {
+public abstract class ControladorDeMenu {
     
-    public static void controladorMenuPrincipal(int operacao){
+    public static void Principal(int operacao){
 
         switch (operacao) {
             case 1: 
                 do{
                     Menu.menuCadastrar(); 
                     operacao = Leitor.deInteiro();
-                    Controlador.controladorMenuCadastro(operacao);
+                    ControladorDeMenu.Cadastro(operacao);
                 }while(operacao != 3);
             break;
             case 2: 
                 do{
                     Menu.menuListar(); 
                     operacao = Leitor.deInteiro();
-                    Controlador.controladorMenuLista(operacao);
+                    ControladorDeMenu.Lista(operacao);
                 }while(operacao != 3);
             break;
             case 3: 
                 do{
                     Menu.menuDeletar(); 
                     operacao = Leitor.deInteiro();
-                    Controlador.controladorMenuDelete(operacao);
+                    ControladorDeMenu.Delete(operacao);
                 }while(operacao != 3);
             break;
             case 4: 
                 do{
                     Menu.menuBuscar(); 
                     operacao = Leitor.deInteiro();
-                    Controlador.controladorMenuBusca(operacao);
+                    ControladorDeMenu.Busca(operacao);
                 }while(operacao != 3);  
             break;
             case 5: break;
@@ -44,7 +44,7 @@ public abstract class Controlador {
         }
     }
 
-    private static void controladorMenuCadastro(int operacao){
+    private static void Cadastro(int operacao){
 
         switch (operacao) {
             case 1:
@@ -53,7 +53,9 @@ public abstract class Controlador {
                 System.out.println("Professor adicionado com sucesso!");
             break;
             case 2:
-                
+                TecnicoADM tecnicoADM = LerClasse.tecnicoADM();
+                Funcionarios.adicionarTecnicoADM(tecnicoADM);
+                System.out.println("Técnico adicionado com sucesso!");
             break;
             case 3: break;
             default:
@@ -62,7 +64,7 @@ public abstract class Controlador {
         }
     }
 
-    private static void controladorMenuLista(int operacao){
+    private static void Lista(int operacao){
 
         switch (operacao) {
             case 1:
@@ -70,19 +72,9 @@ public abstract class Controlador {
                     System.out.println("\nNenhum professor encontrado!\n");
                     return;
                 }else{
-                    System.out.println("\n---- Professores ----\n");
+                    System.out.println("\n---- Professores ----");
                     for(Professor professor : Funcionarios.listarProfessores()){
-                        System.out.println("Nome: " + professor.getNome());
-                        System.out.println("CPF: " + professor.getCpf());
-                        System.out.println("Data de Nascimento: " + professor.getDataNascimento());
-                        System.out.println("Gênero: " + professor.getGenero());
-                        System.out.println("Endereço: " + professor.getEndereco());
-                        System.out.println("Matrícula: " + professor.getMatricula());
-                        System.out.println("Departamento: " + professor.getDepartamento());
-                        System.out.println("Carga Horária: " + professor.getCargaHoraria());
-                        System.out.println("Data de Ingresso: " + professor.getDataIngresso());
-                        System.out.println("Nível: " + professor.getNivelProfessor());
-                        System.out.println("Formação: " + professor.getFormacaoProfessor());
+                        System.out.println(professor.getPrincipaisDados());
                     }
                 }  
             break;
@@ -91,9 +83,9 @@ public abstract class Controlador {
                     System.out.println("\nNenhum técnico encontrado!\n");
                     return;
                 }else{
-                    System.out.println("\n---- Técnicos ----\n");
+                    System.out.println("\n---- Técnicos ----");
                     for(TecnicoADM tecnicoADM : Funcionarios.listarTecnicosADMs()){
-                        System.out.println(tecnicoADM.getNome() + "\n");
+                        System.out.println(tecnicoADM.getPrincipaisDados());
                     }
                 }
             break;
@@ -104,7 +96,7 @@ public abstract class Controlador {
         }
     }
 
-    private static void controladorMenuDelete(int operacao){
+    private static void Delete(int operacao){
         Long matricula;
 
         switch (operacao) {
@@ -137,7 +129,7 @@ public abstract class Controlador {
         }
     }
 
-    private static void controladorMenuBusca(int operacao){
+    private static void Busca(int operacao){
         Long matricula;
 
         switch (operacao) {
@@ -148,17 +140,19 @@ public abstract class Controlador {
                 if (Funcionarios.buscarProfessorPorMatricula(matricula) == null) {
                     System.out.println("\nMatrícula para professor não existe!");
                 }else{
-                    System.out.println("\nO professor é: " + Funcionarios.buscarProfessorPorMatricula(matricula).getNome() + "\n");
+                    System.out.println("\n---- Professor ----");
+                    System.out.println(Funcionarios.buscarProfessorPorMatricula(matricula).getPrincipaisDados());
                 }
             break;
             case 2:
-                System.out.print("\nDigite a matrícula do técnico: ");
+                System.out.print("Digite a matrícula do técnico: ");
                 matricula = Leitor.deLong();
 
                 if (Funcionarios.buscarTecnicoADMPorMatricula(matricula) == null) {
                     System.out.println("\nMatrícula para técnico não existe!");
                 }else{
-                    System.out.println("\nO técnico é: " + Funcionarios.buscarTecnicoADMPorMatricula(matricula).getNome() + "\n");
+                    System.out.println("\n---- Tecnico ----");
+                    System.out.println(Funcionarios.buscarTecnicoADMPorMatricula(matricula).getPrincipaisDados());
                 }
             break;
             case 3: break;
