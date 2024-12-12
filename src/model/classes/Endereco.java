@@ -1,6 +1,8 @@
 package model.classes;
 
-public class Endereco {
+import java.io.Serializable;
+
+public class Endereco implements Serializable{
     private String rua;
     private Integer numero;
     private String bairro;

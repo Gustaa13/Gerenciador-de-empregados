@@ -49,6 +49,7 @@ public class TecnicoADM extends Pessoa implements Funcionario{
         this.formacaoTecnico = formacaoTecnico;
         this.insalubridade = insalubridade;
         this.funcaoGratificada = funcaoGratificada;
+        this.setSalario(this.calcularSalario());
 
     }
 
@@ -82,11 +83,22 @@ public class TecnicoADM extends Pessoa implements Funcionario{
 
     public void setFuncaoGratificada(Boolean funcaoGratificada) {
         this.funcaoGratificada = funcaoGratificada;
-    } 
+    }
+    
+    private Integer getValorInsalubridade(){
+        return insalubridade ? 1 : 0;
+    }
+
+    private Integer getValorGratificacao(){
+        return funcaoGratificada ? 1 : 0;
+    }
 
     @Override
     public Double calcularSalario(){
-        return null;
+
+        Double salario = 2500.0 * Math.pow(1.03, this.nivelTecnico.getValor()) + 2500.0 * 0.25 * this.formacaoTecnico.getValor() + 2500 * 0.5 * getValorInsalubridade() + 2500.0 * 0.5 * getValorGratificacao();
+
+        return salario;
     }
 
     @Override

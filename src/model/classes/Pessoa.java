@@ -1,10 +1,11 @@
 package model.classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import model.enums.Genero;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
     private String nome;
     private String cpf;
     private LocalDate dataNascimento;
@@ -43,8 +44,6 @@ public abstract class Pessoa {
         this.dataIngresso = dataIngresso;
 
     }
-
-
 
     public String getNome() {
         return nome;
@@ -146,7 +145,7 @@ public abstract class Pessoa {
     }
 
     public String getPrincipaisDados(){
-        return "\nNome: " + nome + "\nCpf: " + cpf + "\nMatrícula: " + matricula;
+        return "\nNome: " + nome + "\nCpf: " + cpf + "\nMatrícula: " + matricula + "\nSalário: " + String.format("%.2f", salario);
     }
 }
 

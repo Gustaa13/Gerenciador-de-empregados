@@ -48,6 +48,7 @@ public class Professor extends Pessoa implements Funcionario{
         this.nivelProfessor = nivelProfessor;
         this.formacaoProfessor = formacaoProfessor;
         this.disciplinas = disciplinas;
+        this.setSalario(this.calcularSalario());
 
     }
 
@@ -77,7 +78,10 @@ public class Professor extends Pessoa implements Funcionario{
 
     @Override
     public Double calcularSalario(){
-        return null;
+        
+        Double salario = 4000.0 * Math.pow(1.05, this.nivelProfessor.getValor()) + 4000.0 * 0.25 * this.formacaoProfessor.getValor();
+
+        return salario;
     }
 
     @Override
