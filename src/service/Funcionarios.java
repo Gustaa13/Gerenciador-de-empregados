@@ -35,7 +35,7 @@ public class Funcionarios {
         PessoasDAO bancoDePessoas = PessoasDAO.getInstance();
         
         for(Pessoa pessoa : bancoDePessoas.getPessoas()){
-            if((matricula == pessoa.getMatricula()) && pessoa instanceof Professor){
+            if((matricula.equals(pessoa.getMatricula())) && pessoa instanceof Professor){
                 return (Professor)pessoa;
             }
         }
@@ -68,7 +68,7 @@ public class Funcionarios {
         PessoasDAO bancoDePessoas = PessoasDAO.getInstance();
         
         for(Pessoa pessoa : bancoDePessoas.getPessoas()){
-            if((matricula == pessoa.getMatricula()) && pessoa instanceof TecnicoADM){
+            if((matricula.equals(pessoa.getMatricula())) && pessoa instanceof TecnicoADM){
                 return (TecnicoADM)pessoa;
             }
         }

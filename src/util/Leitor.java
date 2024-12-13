@@ -65,7 +65,7 @@ public abstract class Leitor {
             case "NAO":
                 return false;
             default:
-                System.out.println("\nResposta inválida! Digite sim ou não: ");
+                System.out.print("\nResposta inválida! Digite sim ou não: ");
                 return deBoolean();
         }
     }
@@ -80,7 +80,7 @@ public abstract class Leitor {
         if (cpf.matches("\\d{11}")) {
             return cpf;
         } else {
-            System.out.println("\nCPF inválido! Digite exatamente 11 dígitos: ");
+            System.out.print("\nCPF inválido! Digite exatamente 11 dígitos: ");
             return deCPF();
         }
     }
@@ -103,7 +103,7 @@ public abstract class Leitor {
             DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             return LocalDate.parse(data, formatador);
         } catch (DateTimeParseException e) {
-            System.out.println("\nData inválida! Use o formato dd/MM/yyyy: ");
+            System.out.print("\nData inválida! Use o formato dd/MM/yyyy: ");
             return deData();
         }
     }
@@ -130,7 +130,7 @@ public abstract class Leitor {
             case "OUTRO":
                 return Genero.OUTRO;
             default:
-                System.out.println("\nGênero inválido! Escolha entre FEM, MASC ou OUTRO: ");
+                System.out.print("\nGênero inválido! Escolha entre FEM, MASC ou OUTRO: ");
                 return deGenero();
         }
     }
@@ -156,7 +156,7 @@ public abstract class Leitor {
             case "VIII":
                 return Nivel.VIII;
             default:
-                System.out.println("\nNível inválido! Escolha entre I, II, III, IV, V, VI, VII, VIII: ");
+                System.out.print("\nNível inválido! Escolha entre I, II, III, IV, V, VI, VII, VIII: ");
                 return deNivel();
         }
     }
@@ -172,7 +172,7 @@ public abstract class Leitor {
             case "DOUTORADO":
                 return Formacao.DOUTORADO;
             default:
-                System.out.println("\nFormação inválida! Escolha entre ESPECIALIZACAO, MESTRADO ou DOUTORADO: ");
+                System.out.print("\nFormação inválida! Escolha entre ESPECIALIZACAO, MESTRADO ou DOUTORADO: ");
                 return deFormacao();
         }
     }
